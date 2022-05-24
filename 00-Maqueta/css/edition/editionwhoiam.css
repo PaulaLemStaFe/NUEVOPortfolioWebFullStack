@@ -1,0 +1,57 @@
+/* ------ WHO I AM SECTION ------ */
+.sec_whoiam {
+    background-color: #e6e1d0;
+    border-bottom: 1px solid rgba(0,0,0,0.15);
+    border-radius: 50px;
+    box-shadow: 0 0 15px rgb(0 0 0 / 25%);
+    color: #383a3c;
+    margin: 0 auto;
+    padding: 20px;
+    width: 100%;
+}
+
+.icon_whoiam{
+    display: flex;
+    justify-content: flex-end;
+    padding: 0.4rem;
+    width: 10%;
+}
+
+.icon_edit {
+    display: flex;
+    border-radius: 1.5rem;
+    box-shadow: 5px 5px 15px 5px #7c7b7b;
+    text-decoration: none;
+}
+
+.bi-pencil-fill{
+    font-size: 1.5rem !important;
+    padding: 0.5rem;
+}
+
+#whoiam {
+    margin: 5px;
+}
+
+.sec_whoiam .heading {
+    font-size: 1.8em;
+    font-style: italic;
+    margin: 0px 10px;
+    text-align: center;
+}
+
+#whoiam p {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    text-align: justify;
+}
+
+
+
+
+
+@media screen and (max-width: 960px) {
+    #whoiam p {
+        font-size: 1em
+    }
+}

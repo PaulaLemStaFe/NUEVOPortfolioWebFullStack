@@ -1,0 +1,60 @@
+package com.Portfolio.Api.controller;
+
+import com.Portfolio.Api.dto.CertificateDto;
+import com.Portfolio.Api.model.Certificate;
+import com.Portfolio.Api.service.CertificateService;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/certificate")
+@CrossOrigin(origins = "http://localhost:4200")
+public class CertificateController {
+    
+    @Autowired
+    CertificateService certificateService;
+    
+    @GetMapping("/all")
+    public ResponseEntity<List<Certificate>> getCertificates() {
+        List<Certificate> certificates = certificateService.findCertificate();
+        return new ResponseEntity(certificates, HttpStatus.OK);
+    }
+    
+    @GetMapping("/getidcertificate/{idCertificate}")
+    public ResponseEntity<Certificate> getCertificateById(@PathVariable("idCertificate") Long idCertificate) {
+        Certificate certificate = certificateService.getIdCertificate(idCertificate).orElse(null);
+        return new ResponseEntity(certificate, HttpStatus.OK);
+    }
+    
+    @PostMapping("/add")
+    public ResponseEntity<?> createCertificate(@RequestBody CertificateDto certificateDto){
+        Certificate certificate = new Certificate (certificateDto.getImgCertificate(), certificateDto.getTitleCertificate(), certificateDto.getObtainedCertificate());
+        certificateService.addCertificate(certificate);
+        return new ResponseEntity(certificate, HttpStatus.OK);
+    }
+    
+    @PutMapping("/edit")
+    public ResponseEntity<Certificate> editCertificate(@RequestBody Certificate certificate) {
+        
+        Certificate editCertificate = certificateService.editCertificate(certificate);
+        return new ResponseEntity<>(editCertificate, HttpStatus.OK);
+    }
+    
+    @DeleteMapping("/delete/{idCertificate}")
+    public ResponseEntity<?> deleteCertificate(@PathVariable("idCertificate") Long idCertificate){
+        certificateService.deleteCertificate(idCertificate);
+        return new ResponseEntity(HttpStatus.OK);
+    }
+    
+}
