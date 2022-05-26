@@ -12,10 +12,18 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class CertificateService {
     
-    @Autowired
-    CertificateRepository certificateRepo;
+    private final CertificateRepository certificateRepo;
     
-    public List<Certificate> findCertificate() {
+    @Autowired
+    public CertificateService(CertificateRepository certificateRepo) {
+        this.certificateRepo = certificateRepo;
+    }
+    
+    public Certificate addCertificate(Certificate certificate) {
+        return certificateRepo.save(certificate);
+    }
+    
+    public List<Certificate> findCertificates(){
         return certificateRepo.findAll();
     }
     
@@ -23,16 +31,12 @@ public class CertificateService {
         return certificateRepo.findById(idCertificate);
     }
     
-    public void addCertificate(Certificate certificate) {
-        certificateRepo.save(certificate);
+    public Certificate editCertificate(Certificate certificat){
+        return certificateRepo.save(certificat);
     }
     
     public void deleteCertificate(Long idCertificate){
         certificateRepo.deleteById(idCertificate);
-    }
-    
-    public Certificate editCertificate(Certificate certificat){
-        return certificateRepo.save(certificat);
     }
     
 }

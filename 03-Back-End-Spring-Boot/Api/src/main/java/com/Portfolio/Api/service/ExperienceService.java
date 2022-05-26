@@ -12,10 +12,18 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class ExperienceService {
     
-    @Autowired
-    ExperienceRepository experienceRepo;
+    private final ExperienceRepository experienceRepo;
     
-    public List<Experience> findExperience(){
+    @Autowired
+    public ExperienceService(ExperienceRepository experienceRepo) {
+        this.experienceRepo = experienceRepo;
+    }
+    
+    public Experience addExperience(Experience experience) {
+        return experienceRepo.save(experience);
+    }
+    
+    public List<Experience> findExperiences(){
         return experienceRepo.findAll();
     }
     
@@ -23,16 +31,12 @@ public class ExperienceService {
         return experienceRepo.findById(idExperience);
     }
     
-    public void addExperience(Experience experience) {
-        experienceRepo.save(experience);
+    public Experience editExperience(Experience experience){
+        return experienceRepo.save(experience);
     }
     
     public void deleteExperience(Long idExperience){
         experienceRepo.deleteById(idExperience);
-    }
-    
-    public Experience editExperience(Experience experience) {
-        return experienceRepo.save(experience);
     }
     
 }

@@ -2,25 +2,25 @@ package com.Portfolio.Api.dto;
 
 public class CertificateDto {
     
-    private String imgCertificate;
+    private String urlImgCertificate;
     private String titleCertificate;
     private String obtainedCertificate;
 
     public CertificateDto() {
     }
 
-    public CertificateDto(String imgCertificate, String titleCertificate, String obtainedCertificate) {
-        this.imgCertificate = imgCertificate;
+    public CertificateDto(String urlImgCertificate, String titleCertificate, String obtainedCertificate) {
+        this.urlImgCertificate = urlImgCertificate;
         this.titleCertificate = titleCertificate;
         this.obtainedCertificate = obtainedCertificate;
     }
 
-    public String getImgCertificate() {
-        return imgCertificate;
+    public String getUrlImgCertificate() {
+        return urlImgCertificate;
     }
 
-    public void setImgCertificate(String imgCertificate) {
-        this.imgCertificate = imgCertificate;
+    public void setUrlImgCertificate(String urlImgCertificate) {
+        this.urlImgCertificate = urlImgCertificate;
     }
 
     public String getTitleCertificate() {
@@ -38,6 +38,5 @@ public class CertificateDto {
     public void setObtainedCertificate(String obtainedCertificate) {
         this.obtainedCertificate = obtainedCertificate;
     }
-    
     
 }

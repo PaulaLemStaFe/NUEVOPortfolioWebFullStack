@@ -12,27 +12,31 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class ComputerSkillService {
     
-    @Autowired
-    ComputerSkillRepository computerskillRepo;
+    private final ComputerSkillRepository computerSkillRepo;
     
-    public List<ComputerSkill> findComputerSkill(){
-        return computerskillRepo.findAll();
+    @Autowired
+    public ComputerSkillService(ComputerSkillRepository computerSkillRepo) {
+        this.computerSkillRepo = computerSkillRepo;
+    }
+    
+    public ComputerSkill addComputerSkill(ComputerSkill computerSkill) {
+        return computerSkillRepo.save(computerSkill);
+    }
+    
+    public List<ComputerSkill> findComputerSkills(){
+        return computerSkillRepo.findAll();
     }
     
     public Optional<ComputerSkill> getIdComputerSkill(Long idComputerSkill) {
-        return computerskillRepo.findById(idComputerSkill);
+        return computerSkillRepo.findById(idComputerSkill);
     }
     
-    public void addComputerSkill(ComputerSkill computerskill) {
-        computerskillRepo.save(computerskill);
+    public ComputerSkill editComputerSkill(ComputerSkill computerSkill){
+        return computerSkillRepo.save(computerSkill);
     }
     
     public void deleteComputerSkill(Long idComputerSkill){
-        computerskillRepo.deleteById(idComputerSkill);
-    }
-    
-    public ComputerSkill editComputerSkill(ComputerSkill computerskill) {
-        return computerskillRepo.save(computerskill);
+        computerSkillRepo.deleteById(idComputerSkill);
     }
     
 }

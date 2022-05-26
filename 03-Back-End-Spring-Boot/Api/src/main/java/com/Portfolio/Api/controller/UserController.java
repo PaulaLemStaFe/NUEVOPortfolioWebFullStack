@@ -22,38 +22,41 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = "http://localhost:4200")
 public class UserController {
     
+    private final UserService userService;
+    
     @Autowired
-    UserService userService;
+    public UserController(UserService userService){
+        this.userService = userService;
+    }
     
     @GetMapping("/all")
-    public ResponseEntity<List<User>> getUser() {
-        List<User> users = userService.findUser();
+    public ResponseEntity<List<User>> getUsers() {
+        List<User> users = userService.findUsers();
         return new ResponseEntity(users, HttpStatus.OK);
     }
     
-    @GetMapping("/getiduser/{idUser}")
-    public ResponseEntity<User> getUser(@PathVariable("idUser") Long idUser) {
-        User user = userService.getOneUser(idUser).orElse(null);
+    @GetMapping("/getbyid/{idUser}")
+    public ResponseEntity<User> getUserById(@PathVariable("idUser") Long idUser) {
+        User user = userService.getIdUser(idUser).orElse(null);
         return new ResponseEntity(user, HttpStatus.OK);
     }
     
     @PostMapping("/add")
-    public ResponseEntity<?> createUser(@RequestBody UserDto userDto) {
-        User user = new User (userDto.getNameUser(), userDto.getTitleUser(), userDto.getImgbannerUser(), userDto.getImgprofileUser(), userDto.getText01User(), userDto.getText02User(), userDto.getText03User());
+    public ResponseEntity<?> createUser(@RequestBody User userDto){
+        User user = new User (userDto.getNameUser(), userDto.getTitleUser(), userDto.getUrlImgprofileUser(), userDto.getText01User(), userDto.getText02User(), userDto.getText03User());
         userService.addUser(user);
         return new ResponseEntity(user, HttpStatus.OK);
     }
     
     @PutMapping("/edit/{idUser}")
     public ResponseEntity<?> editUser(@PathVariable("idUser") Long idUser,
-                                             @RequestBody UserDto userDto) {
+                                             @RequestBody User userDto) {
         
-        User user = userService.getOneUser(idUser).orElse(null);
+        User user = userService.getIdUser(idUser).orElse(null);
         
         user.setNameUser(userDto.getNameUser());
         user.setTitleUser(userDto.getTitleUser());
-        user.setImgbannerUser(userDto.getImgbannerUser());
-        user.setImgprofileUser(userDto.getImgprofileUser());
+        user.setUrlImgprofileUser(userDto.getUrlImgprofileUser());
         user.setText01User(userDto.getText01User());
         user.setText02User(userDto.getText02User());
         user.setText03User(userDto.getText03User());
@@ -63,7 +66,7 @@ public class UserController {
     }
     
     @DeleteMapping("/delete/{idUser}")
-    public ResponseEntity<?> deleteUser(@PathVariable("idUser") Long idUser) {
+    public ResponseEntity<?> deleteProject(@PathVariable("idUser") Long idUser){
         userService.deleteUser(idUser);
         return new ResponseEntity(HttpStatus.OK);
     }

@@ -12,19 +12,27 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class UserService {
     
-    @Autowired
-    UserRepository userRepo;
+    private final UserRepository userRepo;
     
-    public List<User> findUser(){
+    @Autowired
+    public UserService(UserRepository userRepo) {
+        this.userRepo = userRepo;
+    }
+    
+    public User addUser(User user) {
+        return userRepo.save(user);
+    }
+    
+    public List<User> findUsers(){
         return userRepo.findAll();
     }
     
-    public Optional<User> getOneUser(Long idUser) {
+    public Optional<User> getIdUser(Long idUser) {
         return userRepo.findById(idUser);
     }
     
-    public void addUser(User user) {
-        userRepo.save(user);
+    public User editUser(User user){
+        return userRepo.save(user);
     }
     
     public void deleteUser(Long idUser){

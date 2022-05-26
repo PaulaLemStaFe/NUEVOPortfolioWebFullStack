@@ -7,6 +7,7 @@ import javax.persistence.Id;
 
 @Entity
 public class Experience {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idExperience;
@@ -17,12 +18,19 @@ public class Experience {
     public Experience() {
     }
 
-    public Experience(String EnterpriseExperience, String DateExperience, String DescriptionExperience) {
+    public Experience(Long idExperience, String EnterpriseExperience, String DateExperience, String DescriptionExperience) {
+        this.idExperience = idExperience;
         this.EnterpriseExperience = EnterpriseExperience;
         this.DateExperience = DateExperience;
         this.DescriptionExperience = DescriptionExperience;
     }
 
+    public Experience(String EnterpriseExperience, String DateExperience, String DescriptionExperience) {
+        this.EnterpriseExperience = EnterpriseExperience;
+        this.DateExperience = DateExperience;
+        this.DescriptionExperience = DescriptionExperience;
+    }
+    
     public Long getIdExperience() {
         return idExperience;
     }
@@ -54,6 +62,5 @@ public class Experience {
     public void setDescriptionExperience(String DescriptionExperience) {
         this.DescriptionExperience = DescriptionExperience;
     }
-
     
 }

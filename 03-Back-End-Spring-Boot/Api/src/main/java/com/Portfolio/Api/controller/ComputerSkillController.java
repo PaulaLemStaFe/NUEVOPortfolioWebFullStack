@@ -18,42 +18,46 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/computerskill")
+@RequestMapping("/computerSkill")
 @CrossOrigin(origins = "http://localhost:4200")
 public class ComputerSkillController {
     
-    @Autowired
-    ComputerSkillService computerskillService;
+    private final ComputerSkillService computerSkillService;
     
-    @GetMapping("/all")
-    public ResponseEntity<List<ComputerSkill>> getComputerSkills(){
-        List<ComputerSkill> computerskills = computerskillService.findComputerSkill();
-        return new ResponseEntity(computerskills, HttpStatus.OK);
+    @Autowired
+    public ComputerSkillController(ComputerSkillService computerSkillService){
+        this.computerSkillService = computerSkillService;
     }
     
-    @GetMapping("/getidcomputerskill/{idComputerSkill}")
+    @GetMapping("/all")
+    public ResponseEntity<List<ComputerSkill>> getComputerSkills() {
+        List<ComputerSkill> computerSkills = computerSkillService.findComputerSkills();
+        return new ResponseEntity(computerSkills, HttpStatus.OK);
+    }
+    
+    @GetMapping("/getbyid/{idComputerSkill}")
     public ResponseEntity<ComputerSkill> getComputerSkillById(@PathVariable("idComputerSkill") Long idComputerSkill) {
-        ComputerSkill computerskill = computerskillService.getIdComputerSkill(idComputerSkill).orElse(null);
-        return new ResponseEntity(computerskill, HttpStatus.OK);
+        ComputerSkill computerSkill = computerSkillService.getIdComputerSkill(idComputerSkill).orElse(null);
+        return new ResponseEntity(computerSkill, HttpStatus.OK);
     }
     
     @PostMapping("/add")
-    public ResponseEntity<?> createComputerSkill(@RequestBody ComputerSkillDto computerskillDto) {
-        ComputerSkill computerskill = new ComputerSkill (computerskillDto.getTitleComputerSkill(), computerskillDto.getImgComputerSkill());
-        computerskillService.addComputerSkill(computerskill);
-        return new ResponseEntity(computerskill, HttpStatus.OK);
+    public ResponseEntity<?> createComputerSkill(@RequestBody ComputerSkill computerSkillDto){
+        ComputerSkill computerSkill = new ComputerSkill (computerSkillDto.getTitleComputerSkill(), computerSkillDto.getUrlImgComputerSkill());
+        computerSkillService.addComputerSkill(computerSkill);
+        return new ResponseEntity(computerSkill, HttpStatus.OK);
     }
     
     @PutMapping("/edit")
-    public ResponseEntity<ComputerSkill> editComputerSkill(@RequestBody ComputerSkill computerskill) {
+    public ResponseEntity<ComputerSkill> editComputerSkill(@RequestBody ComputerSkill computerSkill) {
         
-        ComputerSkill editComputerSkill = computerskillService.editComputerSkill(computerskill);
+        ComputerSkill editComputerSkill = computerSkillService.editComputerSkill(computerSkill);
         return new ResponseEntity<>(editComputerSkill, HttpStatus.OK);
     }
     
     @DeleteMapping("/delete/{idComputerSkill}")
     public ResponseEntity<?> deleteComputerSkill(@PathVariable("idComputerSkill") Long idComputerSkill){
-        computerskillService.deleteComputerSkill(idComputerSkill);
+        computerSkillService.deleteComputerSkill(idComputerSkill);
         return new ResponseEntity(HttpStatus.OK);
     }
     

@@ -4,8 +4,7 @@ public class UserDto {
     
     private String nameUser;
     private String titleUser;
-    private String imgbannerUser;
-    private String imgprofileUser;
+    private String urlImgprofileUser;
     private String text01User;
     private String text02User;
     private String text03User;
@@ -13,11 +12,10 @@ public class UserDto {
     public UserDto() {
     }
 
-    public UserDto(String nameUser, String titleUser, String imgbannerUser, String imgprofileUser, String text01User, String text02User, String text03User) {
+    public UserDto(String nameUser, String titleUser, String urlImgprofileUser, String text01User, String text02User, String text03User) {
         this.nameUser = nameUser;
         this.titleUser = titleUser;
-        this.imgbannerUser = imgbannerUser;
-        this.imgprofileUser = imgprofileUser;
+        this.urlImgprofileUser = urlImgprofileUser;
         this.text01User = text01User;
         this.text02User = text02User;
         this.text03User = text03User;
@@ -39,20 +37,12 @@ public class UserDto {
         this.titleUser = titleUser;
     }
 
-    public String getImgbannerUser() {
-        return imgbannerUser;
+    public String getUrlImgprofileUser() {
+        return urlImgprofileUser;
     }
 
-    public void setImgbannerUser(String imgbannerUser) {
-        this.imgbannerUser = imgbannerUser;
-    }
-
-    public String getImgprofileUser() {
-        return imgprofileUser;
-    }
-
-    public void setImgprofileUser(String imgprofileUser) {
-        this.imgprofileUser = imgprofileUser;
+    public void setUrlImgprofileUser(String urlImgprofileUser) {
+        this.urlImgprofileUser = urlImgprofileUser;
     }
 
     public String getText01User() {

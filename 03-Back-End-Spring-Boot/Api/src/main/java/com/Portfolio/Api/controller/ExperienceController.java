@@ -22,23 +22,27 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = "http://localhost:4200")
 public class ExperienceController {
     
+    private final ExperienceService experienceService;
+    
     @Autowired
-    ExperienceService experienceService;
+    public ExperienceController(ExperienceService experienceService){
+        this.experienceService = experienceService;
+    }
     
     @GetMapping("/all")
-    public ResponseEntity<List<Experience>> getExperiences(){
-        List<Experience> experiences = experienceService.findExperience();
+    public ResponseEntity<List<Experience>> getExperiences() {
+        List<Experience> experiences = experienceService.findExperiences();
         return new ResponseEntity(experiences, HttpStatus.OK);
     }
     
-    @GetMapping("/getidexperience/{idExperience}")
+    @GetMapping("/getbyid/{idExperience}")
     public ResponseEntity<Experience> getExperienceById(@PathVariable("idExperience") Long idExperience) {
         Experience experience = experienceService.getIdExperience(idExperience).orElse(null);
         return new ResponseEntity(experience, HttpStatus.OK);
     }
     
     @PostMapping("/add")
-    public ResponseEntity<?> createExperience(@RequestBody ExperienceDto experienceDto) {
+    public ResponseEntity<?> createExperience(@RequestBody Experience experienceDto){
         Experience experience = new Experience (experienceDto.getEnterpriseExperience(), experienceDto.getDateExperience(), experienceDto.getDescriptionExperience());
         experienceService.addExperience(experience);
         return new ResponseEntity(experience, HttpStatus.OK);

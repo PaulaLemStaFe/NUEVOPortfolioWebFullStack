@@ -12,10 +12,18 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class ProjectService {
     
-    @Autowired
-    ProjectRepository projectRepo;
+    private final ProjectRepository projectRepo;
     
-    public List<Project> findProject(){
+    @Autowired
+    public ProjectService(ProjectRepository projectRepo) {
+        this.projectRepo = projectRepo;
+    }
+    
+    public Project addProject(Project project) {
+        return projectRepo.save(project);
+    }
+    
+    public List<Project> findProjects(){
         return projectRepo.findAll();
     }
     
@@ -23,16 +31,12 @@ public class ProjectService {
         return projectRepo.findById(idProject);
     }
     
-    public void addProject(Project project) {
-        projectRepo.save(project);
+    public Project editProject(Project project){
+        return projectRepo.save(project);
     }
     
     public void deleteProject(Long idProject){
         projectRepo.deleteById(idProject);
-    }
-    
-    public Project editProject(Project project) {
-        return projectRepo.save(project);
     }
     
 }

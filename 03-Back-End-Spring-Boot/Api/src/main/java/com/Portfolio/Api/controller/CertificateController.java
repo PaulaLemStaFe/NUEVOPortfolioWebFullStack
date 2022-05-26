@@ -22,24 +22,28 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = "http://localhost:4200")
 public class CertificateController {
     
+    private final CertificateService certificateService;
+    
     @Autowired
-    CertificateService certificateService;
+    public CertificateController(CertificateService certificateService){
+        this.certificateService = certificateService;
+    }
     
     @GetMapping("/all")
     public ResponseEntity<List<Certificate>> getCertificates() {
-        List<Certificate> certificates = certificateService.findCertificate();
+        List<Certificate> certificates = certificateService.findCertificates();
         return new ResponseEntity(certificates, HttpStatus.OK);
     }
     
-    @GetMapping("/getidcertificate/{idCertificate}")
+    @GetMapping("/getbyid/{idCertificate}")
     public ResponseEntity<Certificate> getCertificateById(@PathVariable("idCertificate") Long idCertificate) {
         Certificate certificate = certificateService.getIdCertificate(idCertificate).orElse(null);
         return new ResponseEntity(certificate, HttpStatus.OK);
     }
     
     @PostMapping("/add")
-    public ResponseEntity<?> createCertificate(@RequestBody CertificateDto certificateDto){
-        Certificate certificate = new Certificate (certificateDto.getImgCertificate(), certificateDto.getTitleCertificate(), certificateDto.getObtainedCertificate());
+    public ResponseEntity<?> createCertificate(@RequestBody Certificate certificateDto){
+        Certificate certificate = new Certificate (certificateDto.getUrlImgCertificate(), certificateDto.getTitleCertificate(), certificateDto.getObtainedCertificate());
         certificateService.addCertificate(certificate);
         return new ResponseEntity(certificate, HttpStatus.OK);
     }

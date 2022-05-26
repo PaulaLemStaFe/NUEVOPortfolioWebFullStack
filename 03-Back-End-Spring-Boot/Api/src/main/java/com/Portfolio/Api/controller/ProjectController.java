@@ -22,24 +22,28 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = "http://localhost:4200")
 public class ProjectController {
     
+    private final ProjectService projectService;
+    
     @Autowired
-    ProjectService projectService;
+    public ProjectController(ProjectService projectService){
+        this.projectService = projectService;
+    }
     
     @GetMapping("/all")
-    public ResponseEntity<List<Project>> getProjects(){
-        List<Project> projects = projectService.findProject();
+    public ResponseEntity<List<Project>> getProjects() {
+        List<Project> projects = projectService.findProjects();
         return new ResponseEntity(projects, HttpStatus.OK);
     }
     
-    @GetMapping("/getidproject/{idProject}")
+    @GetMapping("/getbyid/{idProject}")
     public ResponseEntity<Project> getProjectById(@PathVariable("idProject") Long idProject) {
         Project project = projectService.getIdProject(idProject).orElse(null);
         return new ResponseEntity(project, HttpStatus.OK);
     }
     
     @PostMapping("/add")
-    public ResponseEntity<?> createProject(@RequestBody ProjectDto projectDto) {
-        Project project = new Project (projectDto.getImgProject(), projectDto.getTitleProject(), projectDto.getTextProject(), projectDto.getBtn01urlProject(), projectDto.getBtn02urlProject());
+    public ResponseEntity<?> createProject(@RequestBody Project projectDto){
+        Project project = new Project (projectDto.getUrlImgProject(), projectDto.getTitleProject(), projectDto.getTextProject(), projectDto.getBtn01UrlProject(), projectDto.getBtn02UrlProject());
         projectService.addProject(project);
         return new ResponseEntity(project, HttpStatus.OK);
     }

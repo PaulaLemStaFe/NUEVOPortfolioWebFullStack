@@ -11,15 +11,22 @@ public class Certificate {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idCertificate;
-    private String imgCertificate;
+    private String urlImgCertificate;
     private String titleCertificate;
     private String obtainedCertificate;
 
     public Certificate() {
     }
 
-    public Certificate(String imgCertificate, String titleCertificate, String obtainedCertificate) {
-        this.imgCertificate = imgCertificate;
+    public Certificate(Long idCertificate, String urlImgCertificate, String titleCertificate, String obtainedCertificate) {
+        this.idCertificate = idCertificate;
+        this.urlImgCertificate = urlImgCertificate;
+        this.titleCertificate = titleCertificate;
+        this.obtainedCertificate = obtainedCertificate;
+    }
+
+    public Certificate(String urlImgCertificate, String titleCertificate, String obtainedCertificate) {
+        this.urlImgCertificate = urlImgCertificate;
         this.titleCertificate = titleCertificate;
         this.obtainedCertificate = obtainedCertificate;
     }
@@ -32,12 +39,12 @@ public class Certificate {
         this.idCertificate = idCertificate;
     }
 
-    public String getImgCertificate() {
-        return imgCertificate;
+    public String getUrlImgCertificate() {
+        return urlImgCertificate;
     }
 
-    public void setImgCertificate(String imgCertificate) {
-        this.imgCertificate = imgCertificate;
+    public void setUrlImgCertificate(String urlImgCertificate) {
+        this.urlImgCertificate = urlImgCertificate;
     }
 
     public String getTitleCertificate() {
@@ -55,8 +62,5 @@ public class Certificate {
     public void setObtainedCertificate(String obtainedCertificate) {
         this.obtainedCertificate = obtainedCertificate;
     }
-    
-    
-    
     
 }

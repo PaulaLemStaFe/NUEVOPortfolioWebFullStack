@@ -8,24 +8,34 @@ import javax.persistence.Id;
 
 @Entity
 public class Project {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idProject;
-    private String imgProject;
+    private String urlImgProject;
     private String titleProject;
     private String textProject;
-    private String btn01urlProject;
-    private String btn02urlProject;
+    private String btn01UrlProject;
+    private String btn02UrlProject;
 
     public Project() {
     }
 
-    public Project(String imgProject, String titleProject, String textProject, String btn01urlProject, String btn02urlProject) {
-        this.imgProject = imgProject;
+    public Project(Long idProject, String urlImgProject, String titleProject, String textProject, String btn01UrlProject, String btn02UrlProject) {
+        this.idProject = idProject;
+        this.urlImgProject = urlImgProject;
         this.titleProject = titleProject;
         this.textProject = textProject;
-        this.btn01urlProject = btn01urlProject;
-        this.btn02urlProject = btn02urlProject;
+        this.btn01UrlProject = btn01UrlProject;
+        this.btn02UrlProject = btn02UrlProject;
+    }
+
+    public Project(String urlImgProject, String titleProject, String textProject, String btn01UrlProject, String btn02UrlProject) {
+        this.urlImgProject = urlImgProject;
+        this.titleProject = titleProject;
+        this.textProject = textProject;
+        this.btn01UrlProject = btn01UrlProject;
+        this.btn02UrlProject = btn02UrlProject;
     }
 
     public Long getIdProject() {
@@ -36,12 +46,12 @@ public class Project {
         this.idProject = idProject;
     }
 
-    public String getImgProject() {
-        return imgProject;
+    public String getUrlImgProject() {
+        return urlImgProject;
     }
 
-    public void setImgProject(String imgProject) {
-        this.imgProject = imgProject;
+    public void setUrlImgProject(String urlImgProject) {
+        this.urlImgProject = urlImgProject;
     }
 
     public String getTitleProject() {
@@ -60,20 +70,20 @@ public class Project {
         this.textProject = textProject;
     }
 
-    public String getBtn01urlProject() {
-        return btn01urlProject;
+    public String getBtn01UrlProject() {
+        return btn01UrlProject;
     }
 
-    public void setBtn01urlProject(String btn01urlProject) {
-        this.btn01urlProject = btn01urlProject;
+    public void setBtn01UrlProject(String btn01UrlProject) {
+        this.btn01UrlProject = btn01UrlProject;
     }
 
-    public String getBtn02urlProject() {
-        return btn02urlProject;
+    public String getBtn02UrlProject() {
+        return btn02UrlProject;
     }
 
-    public void setBtn02urlProject(String btn02urlProject) {
-        this.btn02urlProject = btn02urlProject;
+    public void setBtn02UrlProject(String btn02UrlProject) {
+        this.btn02UrlProject = btn02UrlProject;
     }
-
+    
 }

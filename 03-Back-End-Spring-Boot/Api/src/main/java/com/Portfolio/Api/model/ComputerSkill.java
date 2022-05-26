@@ -7,18 +7,25 @@ import javax.persistence.Id;
 
 @Entity
 public class ComputerSkill {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idComputerSkill;
     private String titleComputerSkill;
-    private String imgComputerSkill;
+    private String urlImgComputerSkill;
 
     public ComputerSkill() {
     }
 
-    public ComputerSkill(String titleComputerSkill, String imgComputerSkill) {
+    public ComputerSkill(Long idComputerSkill, String titleComputerSkill, String urlImgComputerSkill) {
+        this.idComputerSkill = idComputerSkill;
         this.titleComputerSkill = titleComputerSkill;
-        this.imgComputerSkill = imgComputerSkill;
+        this.urlImgComputerSkill = urlImgComputerSkill;
+    }
+
+    public ComputerSkill(String titleComputerSkill, String urlImgComputerSkill) {
+        this.titleComputerSkill = titleComputerSkill;
+        this.urlImgComputerSkill = urlImgComputerSkill;
     }
 
     public Long getIdComputerSkill() {
@@ -37,12 +44,12 @@ public class ComputerSkill {
         this.titleComputerSkill = titleComputerSkill;
     }
 
-    public String getImgComputerSkill() {
-        return imgComputerSkill;
+    public String getUrlImgComputerSkill() {
+        return urlImgComputerSkill;
     }
 
-    public void setImgComputerSkill(String imgComputerSkill) {
-        this.imgComputerSkill = imgComputerSkill;
+    public void setUrlImgComputerSkill(String urlImgComputerSkill) {
+        this.urlImgComputerSkill = urlImgComputerSkill;
     }
-
+    
 }

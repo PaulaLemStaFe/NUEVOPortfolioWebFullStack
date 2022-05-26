@@ -3,14 +3,14 @@ package com.Portfolio.Api.dto;
 public class ComputerSkillDto {
     
     private String titleComputerSkill;
-    private String imgComputerSkill;
+    private String urlImgComputerSkill;
 
     public ComputerSkillDto() {
     }
 
-    public ComputerSkillDto(String titleComputerSkill, String imgComputerSkill) {
+    public ComputerSkillDto(String titleComputerSkill, String urlImgComputerSkill) {
         this.titleComputerSkill = titleComputerSkill;
-        this.imgComputerSkill = imgComputerSkill;
+        this.urlImgComputerSkill = urlImgComputerSkill;
     }
 
     public String getTitleComputerSkill() {
@@ -21,13 +21,12 @@ public class ComputerSkillDto {
         this.titleComputerSkill = titleComputerSkill;
     }
 
-    public String getImgComputerSkill() {
-        return imgComputerSkill;
+    public String getUrlImgComputerSkill() {
+        return urlImgComputerSkill;
     }
 
-    public void setImgComputerSkill(String imgComputerSkill) {
-        this.imgComputerSkill = imgComputerSkill;
+    public void setUrlImgComputerSkill(String urlImgComputerSkill) {
+        this.urlImgComputerSkill = urlImgComputerSkill;
     }
-    
     
 }
