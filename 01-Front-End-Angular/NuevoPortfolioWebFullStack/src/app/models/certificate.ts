@@ -1,12 +1,12 @@
 export class Certificate {
-    idCertificate:number;
-    imgCertificate:string;
-    titleCertificate:string;
-    obtainedCertificate:string;
+    idCertificate: number;
+    urlImgCertificate: string;
+    titleCertificate: string;
+    obtainedCertificate: string;
 
-    constructor(idCertificate:number, imgCertificate:string, titleCertificate:string, obtainedCertificate:string) {
+    constructor(idCertificate: number, urlImgCertificate: string, titleCertificate: string, obtainedCertificate: string) {
         this.idCertificate = idCertificate;
-        this.imgCertificate = imgCertificate;
+        this.urlImgCertificate = urlImgCertificate;
         this.titleCertificate = titleCertificate;
         this.obtainedCertificate = obtainedCertificate;
     }

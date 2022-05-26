@@ -22,7 +22,7 @@ export class EditionexperiencesComponent implements OnInit {
   }
 
   getExperiences(): void {
-    this.experienceService.getExperiences().subscribe (
+    this.experienceService.getExperiences().subscribe(
       data => {
         this.experiences = data;
       },
@@ -52,7 +52,7 @@ export class EditionexperiencesComponent implements OnInit {
   }
 
   public onAddExperience(addForm: NgForm): void {
-    document.getElementById('addComputerskillModal')?.click();
+    document.getElementById('addExperienceModal')?.click();
     this.experienceService.createExperience(addForm.value).subscribe({
       next: (response:Experience) => {
         this.getExperiences();
@@ -79,7 +79,7 @@ export class EditionexperiencesComponent implements OnInit {
     })
   }
 
-  public ondeleteExperience(idExperience:number) {
+  public onDeleteExperience(idExperience:number) {
     this.experienceService.deleteExperience(idExperience).subscribe({
       next: (response:void)=>{
         this.getExperiences();

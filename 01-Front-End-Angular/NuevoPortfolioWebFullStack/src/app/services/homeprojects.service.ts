@@ -16,8 +16,8 @@ export class HomeprojectsService {
     return this.http.get<Project[]>(this.projectURL + 'all');
   }
 
-  public getidproject(idProject: number):Observable<Project> {
-    return this.http.get<Project>(this.projectURL + `getidproject/${idProject}`)
+  public getProjectById(idProject: number):Observable<Project> {
+    return this.http.get<Project>(this.projectURL + `getbyid/${idProject}`)
   }
 
   public createProject(project: Project):Observable<any>{

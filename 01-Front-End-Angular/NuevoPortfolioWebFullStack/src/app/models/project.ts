@@ -1,17 +1,17 @@
 export class Project {
-    idProject:number;
-    imgProject:string;
-    titleProject:string;
-    textProject:string;
-    btn01urlProject:string;
-    btn02urlProject:string;
+    idProject: number;
+    urlImgProject: string;
+    titleProject: string;
+    textProject: string;
+    btn01UrlProject: string;
+    btn02UrlProject: string;
 
-    constructor(idProject:number, imgProject:string, titleProject:string, textProject:string, btn01urlProject:string, btn02urlProject:string) {
+    constructor(idProject: number, urlImgProject: string, titleProject: string, textProject: string, btn01UrlProject: string, btn02UrlProject: string) {
         this.idProject = idProject;
-        this.imgProject = imgProject;
+        this.urlImgProject = urlImgProject;
         this.titleProject = titleProject;
         this.textProject = textProject;
-        this.btn01urlProject = btn01urlProject;
-        this.btn02urlProject = btn02urlProject;
+        this.btn01UrlProject = btn01UrlProject;
+        this.btn02UrlProject = btn02UrlProject;
     }
 }

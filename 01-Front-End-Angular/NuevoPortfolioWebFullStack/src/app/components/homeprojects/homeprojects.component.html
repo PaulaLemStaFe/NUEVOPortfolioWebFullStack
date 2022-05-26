@@ -12,13 +12,13 @@
     </div>
     <div class="projects_container">
         <div class="project_card" *ngFor="let project of projects">
-            <img [src]="project.imgProject" class="project_img" [alt]="project.titleProject" [title]="project.titleProject">
+            <img [src]="project.urlImgProject" class="project_img" [alt]="project.titleProject" [title]="project.titleProject">
             <div class="project_content">
                 <h3 class="project_title">{{project.titleProject}}</h3>
                 <p class="project_info">{{project.textProject}}</p>
                 <div class="project_btn_grp">
-                    <button class="project_btn repo"><a [href]="project.btn01urlProject" target="_blank" rel="noopener noreferrer">Repo</a></button>
-                    <button class="project_btn see"><a [href]="project.btn02urlProject" target="_blank" rel="noopener noreferrer">Ver</a></button>
+                    <button class="project_btn repo"><a [href]="project.btn01UrlProject" target="_blank" rel="noopener noreferrer">Repo</a></button>
+                    <button class="project_btn see"><a [href]="project.btn02UrlProject" target="_blank" rel="noopener noreferrer">Ver</a></button>
                 </div>
             </div>
         </div>

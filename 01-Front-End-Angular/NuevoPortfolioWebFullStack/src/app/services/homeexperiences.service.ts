@@ -16,8 +16,8 @@ export class HomeexperiencesService {
     return this.http.get<Experience[]>(this.experienceURL + 'all');
   }
 
-  public getidexperience(idExperience: number):Observable<Experience> {
-    return this.http.get<Experience>(this.experienceURL + `getidexperience/${idExperience}`)
+  public getExperienceById(idExperience: number):Observable<Experience> {
+    return this.http.get<Experience>(this.experienceURL + `getbyid/${idExperience}`)
   }
 
   public createExperience(experience: Experience):Observable<any>{

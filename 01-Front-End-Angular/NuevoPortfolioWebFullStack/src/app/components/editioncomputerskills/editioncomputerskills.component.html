@@ -1,7 +1,7 @@
 <!-- conocimientos section -->
 <section class="computer_skills_section" id="computerskills_section">
     <h2 class="heading"><strong><i>Conocimientos Informáticos</i></strong>
-        <button type="button" class="icon btn btn-info" (click)="onOpenModal('add')" data-bs-toggle="modal" data-bs-target="#addComputerskillModal">
+        <button type="button" class="icon btn btn-info" (click)="onOpenModal('add')" data-bs-toggle="modal" data-bs-target="#addComputerSkillModal">
             <a class="add" alt="Agregar" title="Agregar">
                 <i class="bi bi-plus-square-fill icons"><span class="sr-only"></span></i>
             </a>
@@ -13,15 +13,15 @@
         <div class="row" *ngFor="let computerskill of computerskills">
             <div class="col-sm-3">
                 <h3 class="column_title" id="columna_1">{{computerskill.titleComputerSkill}}</h3>
-                <img class="computerskills_column_img" [src]="computerskill.imgComputerSkill" class="d-block w-100" [alt]="computerskill.titleComputerSkill" [title]="computerskill.titleComputerSkill">
+                <img class="computerskills_column_img" [src]="computerskill.urlImgComputerSkill" class="d-block w-100" [alt]="computerskill.titleComputerSkill" [title]="computerskill.titleComputerSkill">
                 <hr class="computerskills">
                 <div class="icons">
-                    <button class="icon edit btn btn-success" (click)="onOpenModal('edit', computerskill)" data-bs-toggle="modal" data-bs-target="#editComputerskillModal">
+                    <button class="icon edit btn btn-success" (click)="onOpenModal('edit', computerskill)" data-bs-toggle="modal" data-bs-target="#editComputerSkillModal">
                         <a alt="Editar" title="Editar">
                             <i class="bi bi-pencil-fill icons"></i>
                         </a>
                     </button>
-                    <button class="icon btn btn-danger" (click)="onOpenModal('delete', computerskill)" data-bs-toggle="modal" data-bs-target="#deleteComputerskillModal">
+                    <button class="icon btn btn-danger" (click)="onOpenModal('delete', computerskill)" data-bs-toggle="modal" data-bs-target="#deleteComputerSkillModal">
                         <a alt="Eliminar" title="Eliminar">
                             <i class="bi bi-trash-fill icons"></i>
                         </a>    
@@ -30,22 +30,22 @@
             </div>
 
             <!-- Modal Add Certificate aria-hidden="true" -->
-            <div class="modal fade" id="addComputerskillModal" tabindex="-1" role="dialog" aria-labelledby="addComputerskillModalLabel">
+            <div class="modal fade" id="addComputerSkillModal" tabindex="-1" role="dialog" aria-labelledby="addComputerSkillModalLabel">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="addComputerskillModalLabel">Añadir Conocimiento Informático</h5>
+                            <h5 class="modal-title" id="addComputerSkillModalLabel">Añadir Conocimiento Informático</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                         </div>
                         <div class="modal-body">
-                            <form #addForm="ngForm" (ngSubmit)="onAddComputerskill(addForm)">
+                            <form #addForm="ngForm" (ngSubmit)="onAddComputerSkill(addForm)">
                                 <div class="form-group">
-                                    <label for="titleComputerskill">Título:</label>
-                                    <input type="text" ngModel name="titleComputerskill" class="form-control" id="titleComputerskill" placeholder="Título" required>
+                                    <label for="titleComputerSkill">Título:</label>
+                                    <input type="text" ngModel name="titleComputerSkill" class="form-control" id="titleComputerSkill" placeholder="Título" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="imgComputerskill">Url De La Imagen:</label>
-                                    <input type="text" ngModel name="imgComputerskill" class="form-control" id="imgComputerskill" placeholder="Url de la Imagen" required>
+                                    <label for="urlImgComputerSkill">Url De La Imagen:</label>
+                                    <input type="text" ngModel name="urlImgComputerSkill" class="form-control" id="urlImgComputerSkill" placeholder="Url de la Imagen" required>
                                 </div>
                                 <div class="modal-footer">
                                     <button [disabled]="addForm.invalid" type="submit" class="btn btn-success">
@@ -62,26 +62,26 @@
             </div>
             
             <!-- Modal Edit Certificate -->
-            <div class="modal fade" id="editComputerskillModal" tabindex="-1" role="dialog" aria-labelledby="editComputerskillModalLabel" aria-hidden="true">
+            <div class="modal fade" id="editComputerSkillModal" tabindex="-1" role="dialog" aria-labelledby="editComputerSkillModalLabel">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="updateComputerskillModalLabel">Editar Conocimiento Informático {{ editComputerskill?.titleComputerSkill }}</h5>
+                            <h5 class="modal-title" id="editComputerSkillModalLabel">Editar Conocimiento Informático {{ editComputerSkill?.titleComputerSkill }}</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <form #editForm="ngForm">
+                                <input type="hidden" ngModel="{{ editComputerSkill?.idComputerSkill }}" name="idComputerSkill" class="form-control" id="idComputerSkill" placeholder="">
                                 <div class="form-group">
-                                    <label for="titleComputerskill">Título:</label>
-                                    <input type="text" ngModel="{{ editComputerskill?.titleComputerSkill }}" name="titleComputerskill" class="form-control" id="titleComputerskill" placeholder="Título" aria-describedby="emailHelp">
+                                    <label for="titleComputerSkill">Título:</label>
+                                    <input type="text" ngModel="{{ editComputerSkill?.titleComputerSkill }}" name="titleComputerSkill" class="form-control" id="titleComputerSkill" placeholder="Título" aria-describedby="emailHelp">
                                 </div>
                                 <div class="form-group">
-                                    <label for="imgComputerskill">Url De La Imagen:</label>
-                                    <input type="text" ngModel="{{ editComputerskill?.imgComputerSkill }}" name="imgComputerskill" class="form-control" id="imgComputerskill" placeholder="Url de la Imagen">
+                                    <label for="urlImgComputerSkill">Url De La Imagen:</label>
+                                    <input type="text" ngModel="{{ editComputerSkill?.urlImgComputerSkill }}" name="urlImgComputerSkill" class="form-control" id="urlImgComputerSkill" placeholder="Url de la Imagen">
                                 </div>
-                                <input type="hidden" ngModel="{{ editComputerskill?.idComputerSkill }}" name="idCertificate" class="form-control" id="idCertificate" placeholder="">
                                 <div class="modal-footer">
-                                    <button (click)="onEditComputerskill(editForm.value)" type="button" class="btn btn-success">
+                                    <button (click)="onEditComputerSkill(editForm.value)" type="button" class="btn btn-success">
                                         Guardar Cambios
                                     </button>
                                     <button type="button" id="edit-computerskill-form" class="btn btn-danger" data-bs-dismiss="modal">
@@ -95,17 +95,17 @@
             </div>
             
             <!-- Modal Delete Certificate -->
-            <div class="modal fade" id="deleteComputerskillModal" tabindex="-1" role="dialog" aria-labelledby="deleteComputerskillModalLabel" aria-hidden="true" data-bs-toggle="modal" data-bs-target="#deleteModelLabel">
+            <div class="modal fade" id="deleteComputerSkillModal" tabindex="-1" role="dialog" aria-labelledby="deleteComputerSkillModalLabel" aria-hidden="true" data-bs-toggle="modal" data-bs-target="#deleteModelLabel">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="deleteComputerskillModalLabel">Borrar Conocimiento Informático</h5>
+                            <h5 class="modal-title" id="deleteComputerSkillModalLabel">Borrar Conocimiento Informático</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <p>¿Estás seguro de borrar el conocimiento informático {{ deleteComputerskill?.titleComputerSkill }}?</p>
+                            <p>¿Estás seguro de borrar el conocimiento informático {{ deleteComputerSkill?.titleComputerSkill }}?</p>
                             <div class="modal-footer">
-                                <button (click)="onDeleteComputerskill(deleteComputerskill!.idComputerSkill)" data-bs-dismiss="modal" class="delete btn btn-danger">
+                                <button (click)="onDeleteComputerSkill(deleteComputerSkill!.idComputerSkill)" data-bs-dismiss="modal" class="delete btn btn-danger">
                                     Si
                                 </button>
                                 <button type="button" id="delete-computerskill-form" class="delete btn btn-success" data-bs-dismiss="modal">
@@ -116,247 +116,7 @@
                     </div>
                 </div>
             </div>
-
-
-
-            <!--<div class="col-sm-3">
-                <h3 class="column_title" id="columna_1">Spring Boot</h3>
-                <img class="computerskills_column_img" src="https://acortar.link/aGkb7W" class="d-block w-100" alt="Spring Boot" title="Spring Boot">
-                <hr class="computerskills">
-                <div class="icons">
-                    <button class="icon edit btn btn-success">
-                        <a alt="Editar" title="Editar">
-                            <i class="bi bi-pencil-fill icons"></i>
-                        </a>
-                    </button>
-                    <button class="icon btn btn-danger">
-                        <a alt="Eliminar" title="Eliminar">
-                            <i class="bi bi-trash-fill icons"></i>
-                        </a>    
-                    </button>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <h3 class="column_title" id="columna_1">NetBeans</h3>
-                <img class="computerskills_column_img" src="https://acortar.link/BNRYGa" class="d-block w-100" alt="NetBeans" title="NetBeans">
-                <hr class="computerskills">
-                <div class="icons">
-                    <button class="icon edit btn btn-success">
-                        <a alt="Editar" title="Editar">
-                            <i class="bi bi-pencil-fill icons"></i>
-                        </a>
-                    </button>
-                    <button class="icon btn btn-danger">
-                        <a alt="Eliminar" title="Eliminar">
-                            <i class="bi bi-trash-fill icons"></i>
-                        </a>    
-                    </button>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <h3 class="column_title" id="columna_1">Java</h3>
-                <img class="computerskills_column_img" src="https://acortar.link/ULhCev" class="d-block w-100" alt="Java" title="Java">
-                <hr class="computerskills">
-                <div class="icons">
-                    <button class="icon edit btn btn-success">
-                        <a alt="Editar" title="Editar">
-                            <i class="bi bi-pencil-fill icons"></i>
-                        </a>
-                    </button>
-                    <button class="icon btn btn-danger">
-                        <a alt="Eliminar" title="Eliminar">
-                            <i class="bi bi-trash-fill icons"></i>
-                        </a>    
-                    </button>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <h3 class="column_title" id="columna_1">MySQL</h3>
-                <img class="computerskills_column_img" src="https://acortar.link/ll8FhY" class="d-block w-100" alt="MySQL" title="MySQL">
-                <hr class="computerskills">
-                <div class="icons">
-                    <button class="icon edit btn btn-success">
-                        <a alt="Editar" title="Editar">
-                            <i class="bi bi-pencil-fill icons"></i>
-                        </a>
-                    </button>
-                    <button class="icon btn btn-danger">
-                        <a alt="Eliminar" title="Eliminar">
-                            <i class="bi bi-trash-fill icons"></i>
-                        </a>    
-                    </button>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <h3 class="column_title" id="columna_1">Angular</h3>
-                <img class="computerskills_column_img" src="https://acortar.link/xvfEBB" class="d-block w-100" alt="Angular" title="Angular">
-                <hr class="computerskills">
-                <div class="icons">
-                    <button class="icon edit btn btn-success">
-                        <a alt="Editar" title="Editar">
-                            <i class="bi bi-pencil-fill icons"></i>
-                        </a>
-                    </button>
-                    <button class="icon btn btn-danger">
-                        <a alt="Eliminar" title="Eliminar">
-                            <i class="bi bi-trash-fill icons"></i>
-                        </a>    
-                    </button>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <h3 class="column_title" id="columna_1">Typescript</h3>
-                <img class="computerskills_column_img" src="https://acortar.link/aDcSXc" class="d-block w-100" alt="Typescript" title="Typescript">
-                <hr class="computerskills">
-                <div class="icons">
-                    <button class="icon edit btn btn-success">
-                        <a alt="Editar" title="Editar">
-                            <i class="bi bi-pencil-fill icons"></i>
-                        </a>
-                    </button>
-                    <button class="icon btn btn-danger">
-                        <a alt="Eliminar" title="Eliminar">
-                            <i class="bi bi-trash-fill icons"></i>
-                        </a>    
-                    </button>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <h3 class="column_title" id="columna_1">JavaScript</h3>
-                <img class="computerskills_column_img" src="https://acortar.link/uriGVV" class="d-block w-100" alt="JavaScript" title="JavaScript">
-                <hr class="computerskills">
-                <div class="icons">
-                    <button class="icon edit btn btn-success">
-                        <a alt="Editar" title="Editar">
-                            <i class="bi bi-pencil-fill icons"></i>
-                        </a>
-                    </button>
-                    <button class="icon btn btn-danger">
-                        <a alt="Eliminar" title="Eliminar">
-                            <i class="bi bi-trash-fill icons"></i>
-                        </a>    
-                    </button>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <h3 class="column_title" id="columna_1">CSS</h3>
-                <img class="computerskills_column_img" src="https://acortar.link/ufGcFq" class="d-block w-100" alt="CSS" title="CSS">
-                <hr class="computerskills">
-                <div class="icons">
-                    <button class="icon edit btn btn-success">
-                        <a alt="Editar" title="Editar">
-                            <i class="bi bi-pencil-fill icons"></i>
-                        </a>
-                    </button>
-                    <button class="icon btn btn-danger">
-                        <a alt="Eliminar" title="Eliminar">
-                            <i class="bi bi-trash-fill icons"></i>
-                        </a>    
-                    </button>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <h3 class="column_title" id="columna_1">HTML</h3>
-                <img class="computerskills_column_img" src="https://acortar.link/UaECF9" class="d-block w-100" alt="HTML" title="HTML">
-                <hr class="computerskills">
-                <div class="icons">
-                    <button class="icon edit btn btn-success">
-                        <a alt="Editar" title="Editar">
-                            <i class="bi bi-pencil-fill icons"></i>
-                        </a>
-                    </button>
-                    <button class="icon btn btn-danger">
-                        <a alt="Eliminar" title="Eliminar">
-                            <i class="bi bi-trash-fill icons"></i>
-                        </a>    
-                    </button>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <h3 class="column_title" id="columna_1">GitHub</h3>
-                <img class="computerskills_column_img" src="https://acortar.link/od0V9G" class="d-block w-100" alt="GitHub" title="GitHub">
-                <hr class="computerskills">
-                <div class="icons">
-                    <button class="icon edit btn btn-success">
-                        <a alt="Editar" title="Editar">
-                            <i class="bi bi-pencil-fill icons"></i>
-                        </a>
-                    </button>
-                    <button class="icon btn btn-danger">
-                        <a alt="Eliminar" title="Eliminar">
-                            <i class="bi bi-trash-fill icons"></i>
-                        </a>    
-                    </button>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <h3 class="column_title" id="columna_1">Git</h3>
-                <img class="computerskills_column_img" src="https://acortar.link/WkKBED" class="d-block w-100" alt="Git" title="Git">
-                <hr class="computerskills">
-                <div class="icons">
-                    <button class="icon edit btn btn-success">
-                        <a alt="Editar" title="Editar">
-                            <i class="bi bi-pencil-fill icons"></i>
-                        </a>
-                    </button>
-                    <button class="icon btn btn-danger">
-                        <a alt="Eliminar" title="Eliminar">
-                            <i class="bi bi-trash-fill icons"></i>
-                        </a>    
-                    </button>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <h3 class="column_title" id="columna_1">Ruby</h3>
-                <img class="computerskills_column_img" src="https://acortar.link/6cIm3e" class="d-block w-100" alt="Ruby" title="Ruby">
-                <hr class="computerskills">
-                <div class="icons">
-                    <button class="icon edit btn btn-success">
-                        <a alt="Editar" title="Editar">
-                            <i class="bi bi-pencil-fill icons"></i>
-                        </a>
-                    </button>
-                    <button class="icon btn btn-danger">
-                        <a alt="Eliminar" title="Eliminar">
-                            <i class="bi bi-trash-fill icons"></i>
-                        </a>    
-                    </button>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <h3 class="column_title" id="columna_1">Gobstones</h3>
-                <img class="computerskills_column_img" src="https://acortar.link/4urdge" class="d-block w-100" alt="Gobstones" title="Gobstones">
-                <hr class="computerskills">
-                <div class="icons">
-                    <button class="icon edit btn btn-success">
-                        <a alt="Editar" title="Editar">
-                            <i class="bi bi-pencil-fill icons"></i>
-                        </a>
-                    </button>
-                    <button class="icon btn btn-danger">
-                        <a alt="Eliminar" title="Eliminar">
-                            <i class="bi bi-trash-fill icons"></i>
-                        </a>    
-                    </button>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <h3 class="column_title" id="columna_1">Delphi 5</h3>
-                <img class="computerskills_column_img" src="https://acortar.link/9RoOrj" class="d-block w-100" alt="Delphi 5" title="Delphi 5">
-                <hr class="computerskills">
-                <div class="icons">
-                    <button class="icon edit btn btn-success">
-                        <a alt="Editar" title="Editar">
-                            <i class="bi bi-pencil-fill icons"></i>
-                        </a>
-                    </button>
-                    <button class="icon btn btn-danger">
-                        <a alt="Eliminar" title="Eliminar">
-                            <i class="bi bi-trash-fill icons"></i>
-                        </a>    
-                    </button>
-                </div>
-            </div>-->
+            
         </div>
     </div>
 </section>

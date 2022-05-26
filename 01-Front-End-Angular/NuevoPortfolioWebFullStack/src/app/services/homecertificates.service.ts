@@ -17,7 +17,7 @@ export class HomecertificatesService {
   }
 
   public getCertificateById(idCertificate: number):Observable<Certificate> {
-    return this.http.get<Certificate>(this.certificateURL + `getidcertificate/${idCertificate}`)
+    return this.http.get<Certificate>(this.certificateURL + `getbyid/${idCertificate}`)
   }
 
   public createCertificate(certificate: Certificate):Observable<any>{

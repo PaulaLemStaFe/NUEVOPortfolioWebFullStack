@@ -12,8 +12,6 @@ export class LoginbannerComponent implements OnInit {
 
   public user: User | undefined;
 
-  public editUser: User | undefined;
-
   constructor(private homeuserService: HomeuserService) { }
 
   ngOnInit(): void {

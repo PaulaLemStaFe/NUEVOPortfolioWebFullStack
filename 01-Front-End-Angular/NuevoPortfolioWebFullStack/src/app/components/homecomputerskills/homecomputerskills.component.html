@@ -4,10 +4,10 @@
 
     <!-- 4 columnas -->
     <div class="columns">
-        <div class="row" *ngFor="let computerskill of computeskills">
+        <div class="row" *ngFor="let computerskill of computerskills">
             <div class="col-sm-3">
                 <h3 class="column_title" id="columna_1">{{computerskill.titleComputerSkill}}</h3>
-                <img class="computerskills_column_img" [src]="computerskill.imgComputerSkill" class="d-block w-100" [alt]="computerskill.titleComputerSkill" [title]="computerskill.titleComputerSkill">
+                <img class="computerskills_column_img" [src]="computerskill.urlImgComputerSkill" class="d-block w-100" [alt]="computerskill.titleComputerSkill" [title]="computerskill.titleComputerSkill">
             </div>
             <!--<div class="col-sm-3">
                 <h3 class="column_title" id="columna_1">Spring Boot</h3>

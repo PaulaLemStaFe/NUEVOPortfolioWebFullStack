@@ -14,11 +14,11 @@ export class HomeuserService {
   constructor(private http: HttpClient) { }
 
   public getUser():Observable<User>{
-    return this.http.get<User>(`${this.apiServerUrl}/user/getiduser/1`);
+    return this.http.get<User>(`${this.apiServerUrl}/user/getbyid/1`);
   };
 
   public editUser(user: User):Observable<any>{
-    return this.http.put<any>(`${this.apiServerUrl}/user/edit/1`, user); 
+    return this.http.put<any>(`${this.apiServerUrl}/user/edit/1`, user);
   }
 
 }

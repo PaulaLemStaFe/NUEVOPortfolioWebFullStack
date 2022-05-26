@@ -9,7 +9,7 @@ import { HomecomputerskillsService } from 'src/app/services/homecomputerskills.s
 })
 export class HomecomputerskillsComponent implements OnInit {
 
-  computeskills: Computerskill[] = [];
+  computerskills: Computerskill[] = [];
 
   constructor(private computerskillService: HomecomputerskillsService) { }
 
@@ -20,7 +20,7 @@ export class HomecomputerskillsComponent implements OnInit {
   getComputerSkills(): void {
     this.computerskillService.getComputerSkills().subscribe(
       data => {
-        this.computeskills = data;
+        this.computerskills = data;
       },
       error => {
         console.log(error);

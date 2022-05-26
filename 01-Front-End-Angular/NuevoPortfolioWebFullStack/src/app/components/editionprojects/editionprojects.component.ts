@@ -79,7 +79,7 @@ export class EditionprojectsComponent implements OnInit {
     })
   }
 
-  public ondeleteProject(idProject:number) {
+  public onDeleteProject(idProject:number) {
     this.projectService.deleteProject(idProject).subscribe({
       next: (response:void)=>{
         this.getProjects();

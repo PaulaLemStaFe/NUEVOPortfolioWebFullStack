@@ -8,7 +8,7 @@ import { Computerskill } from '../models/computerskill';
 })
 export class HomecomputerskillsService {
 
-  computerskillURL = 'http://localhost:8080/computerskill/';
+  computerskillURL = 'http://localhost:8080/computerSkill/';
 
   constructor(private http: HttpClient) { }
 
@@ -16,8 +16,8 @@ export class HomecomputerskillsService {
     return this.http.get<Computerskill[]>(this.computerskillURL + 'all');
   }
 
-  public getidcomputerskill(idComputerSkill: number):Observable<Computerskill> {
-    return this.http.get<Computerskill>(this.computerskillURL + `getidcomputerskill/${idComputerSkill}`)
+  public getComputerSkillById(idComputerSkill: number):Observable<Computerskill> {
+    return this.http.get<Computerskill>(this.computerskillURL + `getbyid/${idComputerSkill}`)
   }
 
   public createComputerSkill(computerskill: Computerskill):Observable<any>{

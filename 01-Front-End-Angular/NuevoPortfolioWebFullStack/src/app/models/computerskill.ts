@@ -1,11 +1,11 @@
 export class Computerskill {
-    idComputerSkill:number;
-    titleComputerSkill:string;
-    imgComputerSkill:string;
+    idComputerSkill: number;
+    titleComputerSkill: string;
+    urlImgComputerSkill: string;
 
-    constructor(idComputerSkill:number, titleComputerSkill:string, imgComputerSkill:string) {
+    constructor(idComputerSkill: number, titleComputerSkill: string, urlImgComputerSkill: string) {
         this.idComputerSkill = idComputerSkill;
         this.titleComputerSkill = titleComputerSkill;
-        this.imgComputerSkill = imgComputerSkill;
+        this.urlImgComputerSkill = urlImgComputerSkill;
     }
 }

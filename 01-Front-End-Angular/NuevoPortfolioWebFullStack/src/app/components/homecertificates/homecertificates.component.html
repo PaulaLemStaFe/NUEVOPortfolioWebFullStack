@@ -5,7 +5,7 @@
     </div>
     <div class="certificates_list row">
         <div class="certificates_list_item col-sm-3" *ngFor="let certificate of certificates">
-            <img class="certificates_list_img column_img d-block w-100" [src]="certificate.imgCertificate" [alt]="certificate.titleCertificate" [title]="certificate.titleCertificate">
+            <img class="certificates_list_img column_img d-block w-100" [src]="certificate.urlImgCertificate" [alt]="certificate.titleCertificate" [title]="certificate.titleCertificate">
             <h3 class="certificates_list_title column_title" id="columna_1">{{certificate.titleCertificate}}</h3>
             <p class="certificates_list_text">{{certificate.obtainedCertificate}}</p>
         </div>

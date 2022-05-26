@@ -12,16 +12,16 @@ import { HomecomputerskillsService } from 'src/app/services/homecomputerskills.s
 export class EditioncomputerskillsComponent implements OnInit {
 
   computerskills: Computerskill[] = [];
-  editComputerskill: Computerskill | undefined;
-  deleteComputerskill: Computerskill | undefined;
+  editComputerSkill: Computerskill | undefined;
+  deleteComputerSkill: Computerskill | undefined;
 
   constructor(private computerskillsService: HomecomputerskillsService) { }
 
   ngOnInit(): void {
-    this.getComputerskills();
+    this.getComputerSkills();
   }
 
-  getComputerskills(): void {
+  getComputerSkills(): void {
     this.computerskillsService.getComputerSkills().subscribe(
       data => {
         this.computerskills = data;
@@ -39,23 +39,23 @@ export class EditioncomputerskillsComponent implements OnInit {
     button.style.display = 'none';
     button.setAttribute('data-toggle', 'modal');
     if (mode === 'add') {
-      button.setAttribute('data-target', '#addComputerskillModal');
+      button.setAttribute('data-target', '#addComputerSkillModal');
     } else if (mode === 'delete') {
-      button.setAttribute('data-target', '#deleteComputerskillModal');
-      this.deleteComputerskill = computerskill;
+      button.setAttribute('data-target', '#deleteComputerSkillModal');
+      this.deleteComputerSkill = computerskill;
     } else if (mode === 'edit') {
-      button.setAttribute('data-target', '#editComputerskillModal');
-      this.editComputerskill = computerskill;
+      button.setAttribute('data-target', '#editComputerSkillModal');
+      this.editComputerSkill = computerskill;
     }
     container?.appendChild(button);
     button.click();
   }
 
-  public onAddComputerskill(addForm: NgForm): void {
-    document.getElementById('addComputerskillModal')?.click();
+  public onAddComputerSkill(addForm: NgForm): void {
+    document.getElementById('addComputerSkillModal')?.click();
     this.computerskillsService.createComputerSkill(addForm.value).subscribe({
       next: (response:Computerskill) => {
-        this.getComputerskills();
+        this.getComputerSkills();
         addForm.reset();
       },
       error:(error:HttpErrorResponse)=>{
@@ -65,13 +65,13 @@ export class EditioncomputerskillsComponent implements OnInit {
     })
   }
 
-  public onEditComputerskill(computerskill: Computerskill){
-    this.editComputerskill=computerskill;
-    document.getElementById('editComputerskillModal')?.click();
+  public onEditComputerSkill(computerskill: Computerskill){
+    this.editComputerSkill=computerskill;
+    document.getElementById('editComputerSkillModal')?.click();
     this.computerskillsService.editComputerSkill(computerskill).subscribe({
       next: (response:Computerskill) => {
         console.log(response);
-        this.getComputerskills();
+        this.getComputerSkills();
       },
       error:(error:HttpErrorResponse)=>{
         alert(error.message);
@@ -79,10 +79,10 @@ export class EditioncomputerskillsComponent implements OnInit {
     })
   }
 
-  public onDeleteComputerskill(idComputerSkill:number) {
+  public onDeleteComputerSkill(idComputerSkill:number) {
     this.computerskillsService.deleteComputerSkill(idComputerSkill).subscribe({
       next: (response:void)=>{
-        this.getComputerskills();
+        this.getComputerSkills();
       },
       error:(error:HttpErrorResponse)=>{
         alert(error.message);
